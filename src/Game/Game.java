@@ -3,8 +3,9 @@ package Game;
 import Game.GUI.GamePanel;
 import Game.GUI.Window;
 
-public class Game {
+public abstract class Game {
 
+    public static final int PORT = 8000;
     public static final int WIN_WIDTH = 1000, WIN_HEIGHT = 1000;
     public static final int BOARD_X_START = 200, BOARD_Y_START = 200;
     public static final int BOARD_WIDTH = WIN_WIDTH - BOARD_X_START, BOARD_HEIGHT = WIN_HEIGHT - BOARD_Y_START;
@@ -17,19 +18,32 @@ public class Game {
     public static final int BOX_WIDTH = X_SPACING - (BOX_X_PADDING * 2), BOX_HEIGHT = Y_SPACING - (BOX_Y_PADDING * 2);
 
     public static final int FREE = 0, PLAYER_ONE = 1, PLAYER_TWO = 2;
-    private int[][] fields;
+    protected int[][] fields;
 
     private Window window;
-    private GamePanel gamePanel;
+    protected GamePanel gamePanel;
+    protected int currentPlayer;
+    protected int thisPlayer;
 
-    public Game() {
-        window = new Window("Tic-Tac-Toe", WIN_WIDTH, WIN_HEIGHT);
+    public Game(int thisPlayer) {
+        this.thisPlayer = thisPlayer;
+        window = new Window(this, "Nic-Nac-Noe", WIN_WIDTH, WIN_HEIGHT);
         gamePanel = new GamePanel(this);
         fields = new int[3][3];
         fields[0][0] = PLAYER_ONE;
         fields[0][1] = PLAYER_TWO;
         window.add(gamePanel);
+        window.setVisible(true);
+        currentPlayer = Game.PLAYER_ONE;
     }
+
+    protected boolean isMyTurn() {
+        return thisPlayer == currentPlayer;
+    }
+
+    public abstract void inputReceived(int x, int y);
+    public abstract void packetReceived(Object object);
+    public abstract void close();
 
     public final int[][] getFields() {
         return fields;
