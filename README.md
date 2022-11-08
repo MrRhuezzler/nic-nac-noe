@@ -1,22 +1,10 @@
-## Protocol
-1) Client Connects to the server
-2) Client sends "CLIENT_INFO_PACKET"
-3) Server responds with "SERVER_OKAY" or "SERVER_ERROR"
-4) If "SERVER_OKAY" no problems
-5) if "SERVER_ERROR" and the error code is 1, then user tries to send another "CLIENT_INFO_PACKET" with a different username.
-6) Client Connection with the server is established.
+<p align="center">
+  <img src="assests/logo.png"/>
+</p>
 
-#### CLIENT_INFO_PACKET
-- username
-- other information maybe added
+Authors          : [MrRhuezzler](https://github.com/MrRhuezzler), [Sakthi](https://github.com/sakthi-priyadharshini), [jddark62](https://github.com/jddark62)  
+Project Language : Java  
+Project Year     : 2022  
 
-#### SERVER_OKAY
-- no information
-
-#### SERVER_ERROR
-- error code
-- description
-- codes
-  - 1 - Username not unique
-  - error codes to be added
-  - N - Internal Error
+## Short Description
+This is a match making server, which accepts connections from many clients and match them as they connect with one another. The server is threaded to handle many clients and their games at once. The match making server is built around the idea of generality, although in my opinion the server became centeric over the game of tic-tae-toe.
