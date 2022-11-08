@@ -25,16 +25,18 @@ public abstract class Game {
     protected int currentPlayer;
     protected int thisPlayer;
 
-    public Game(int thisPlayer) {
-        this.thisPlayer = thisPlayer;
+    public Game() {
+        this.thisPlayer = Game.FREE;
         window = new Window(this, "Nic-Nac-Noe", WIN_WIDTH, WIN_HEIGHT);
         gamePanel = new GamePanel(this);
         fields = new int[3][3];
-        fields[0][0] = PLAYER_ONE;
-        fields[0][1] = PLAYER_TWO;
         window.add(gamePanel);
         window.setVisible(true);
         currentPlayer = Game.PLAYER_ONE;
+    }
+
+    public void setPlayer(int player) {
+        thisPlayer = player;
     }
 
     protected boolean isMyTurn() {

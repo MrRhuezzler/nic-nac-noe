@@ -15,7 +15,7 @@ public class Server extends Game {
     private Connection connection;
 
     public Server() {
-        super(Game.PLAYER_ONE);
+        super();
         try {
             serverSocket = new ServerSocket(Game.PORT);
             socket = serverSocket.accept();

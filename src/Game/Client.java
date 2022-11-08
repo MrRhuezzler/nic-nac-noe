@@ -13,7 +13,7 @@ public class Client extends Game{
     private Connection connection;
 
     public Client() {
-        super(Game.PLAYER_TWO);
+        super();
         try {
             socket = new Socket("localhost", Game.PORT);
             connection = new Connection(this, socket);
